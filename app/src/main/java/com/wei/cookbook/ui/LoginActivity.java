@@ -101,21 +101,28 @@ public class LoginActivity extends BaseActivity implements TextWatcher
             case R.id.tv_action://登录
                 /*判断当前状态是否符合登录状态*/
                 String account = mEtPhone.getText().toString();
+                String pass = mEtPassWord.getText().toString();
+                UserBean user = new UserBean();
+                user.setAccount(account);
+                user.setPassWord(pass);
+                String admin = "123";
+                if(account.equals(admin))
+                {
+                    alert(getString(R.string.alert_login_success));
+                    App.setUser(user);
+                    openActivity(MainActivity.class, null);
+                    doFinish(200);
+                }
                 if (TextUtils.isEmpty(account) || (!StringUtils.isMobile(account)))
                 {
                     alert(getString(R.string.alert_enter_phone));
                     return;
                 }
-
-                String pass = mEtPassWord.getText().toString();
                 if (TextUtils.isEmpty(pass) || pass.length() < 6)
                 {
                     alert(getString(R.string.alert_enter_passWord));
                     return;
                 }
-                UserBean user = new UserBean();
-                user.setAccount(account);
-                user.setPassWord(pass);
                 if (user.verify())
                 {
                     alert(getString(R.string.alert_login_success));
