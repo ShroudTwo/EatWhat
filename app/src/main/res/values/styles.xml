@@ -1,0 +1,65 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.Design.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/color</item>
+        <item name="colorPrimaryDark">@android:color/white</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <!--启动页面主题-->
+    <style name="SplashTheme" parent="AppTheme">
+        <item name="android:windowBackground">@drawable/splash</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+
+    <!--弹窗主题-->
+    <style name="DialogStyle" parent="Theme.AppCompat.Dialog">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
+
+    <!--输入框主题-->
+    <style name="LoginEditStyle">
+        <item name="android:background">@color/editBg</item>
+        <item name="android:textSize">@dimen/sp_13</item>
+        <item name="android:textColorHint">@color/hint</item>
+        <item name="android:textColor">@color/textTitle</item>
+        <item name="android:textCursorDrawable">@drawable/ed_cursor_bg</item>
+        <item name="android:maxLines">1</item>
+    </style>
+
+
+    <!--主按钮主题-->
+    <style name="MainButtonUnselectedStyle">
+        <item name="android:textSize">@dimen/sp_13</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/textUnSelected</item>
+        <item name="android:background">@color/textBG</item>
+    </style>
+
+
+    <!--获取验证码初始状态-->
+    <style name="LoginCodeUnselectedStyle">
+        <item name="android:background">@color/textBG</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/sp_14</item>
+        <item name="android:textColor">@color/textUnSelected</item>
+    </style>
+
+    <!--获取验证码验证状态-->
+    <style name="LoginCodeSelectedStyle">
+        <item name="android:background">@color/color</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/sp_14</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+</resources>

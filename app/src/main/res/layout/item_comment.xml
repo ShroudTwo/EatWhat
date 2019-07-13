@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/dp_1"
+    android:background="@color/beige">
+
+
+    <ImageView
+        android:id="@+id/item_image"
+        android:layout_width="@dimen/dp_30"
+        android:layout_height="@dimen/dp_30"
+        android:layout_marginLeft="@dimen/dp_15"
+        android:layout_marginTop="@dimen/dp_15"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        tools:src="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/item_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/item_image"
+        android:layout_marginLeft="@dimen/dp_15"
+        android:layout_marginRight="@dimen/dp_15"
+        android:layout_toRightOf="@id/item_image"
+        android:ellipsize="end"
+        android:gravity="center_vertical"
+        android:maxLines="1"
+        android:textColor="@color/textTitle"
+        android:textSize="@dimen/sp_11"
+        tools:text="@string/app_name" />
+
+
+    <TextView
+        android:id="@+id/item_descript"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/item_name"
+        android:layout_alignLeft="@id/item_name"
+        android:layout_marginLeft="-34dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginRight="@dimen/dp_15"
+        android:layout_toRightOf="@id/item_image"
+        android:ellipsize="end"
+        android:lineSpacingExtra="@dimen/dp_3"
+        android:textColor="@color/textUnSelected"
+        android:textSize="@dimen/sp_14"
+        tools:text="@string/tools_text" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_1"
+        android:layout_below="@id/item_descript"
+        android:layout_alignLeft="@id/item_name"
+        android:layout_marginTop="@dimen/dp_17"
+        android:background="#fafafa" />
+</RelativeLayout>

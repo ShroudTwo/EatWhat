@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/beige"
+    android:paddingTop="16dp"
+    android:paddingBottom="16dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp">
+
+    <TextView
+        android:id="@+id/my_signature1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:lines="15"
+        android:hint="个性签名. . ."
+        android:background="@color/white"
+        android:padding="5dp"
+        android:gravity="top"
+        android:layout_marginBottom="10dp"
+        android:inputType="textMultiLine"/>
+
+
+    <TextView
+        android:id="@+id/username1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:lines="2"
+        android:hint="用户名"
+        />
+    <TextView
+        android:id="@+id/gender1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:lines="2"
+        android:hint="性别"
+        />
+
+    <TextView
+        android:id="@+id/age1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:lines="2"
+        android:hint="年龄"
+        />
+
+<!--    <TextView
+        android:id="@+id/age1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:lines="2"
+        android:hint="手机号"
+        />-->
+
+    <Button
+        android:id="@+id/alter_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginTop="5sp"
+        android:background="@color/textBG"
+        android:text="编辑用户资料" />
+</LinearLayout>

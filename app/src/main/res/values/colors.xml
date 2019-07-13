@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+
+    <color name="color">#30c7fe</color>
+    <color name="textUnSelected">#757e8f</color>
+    <color name="line">#e6e6e6</color>
+    <color name="selected">#e6e9eb</color>
+    <color name="textTitle">#2c3547</color>
+    <color name="editBg">#f0f0f0</color>
+    <color name="hint">#aeaeae</color>
+    <color name="textBG">#cdd1d7</color>
+    <color name="toast">#3498db</color>
+    <color name="price">#e65858</color>
+    <color name="history">#595757</color>
+    <color name="count">#b3b3b3</color>
+    <color name="stroke">#e8dfdc</color>
+    <color name="gift">#593e2d</color>
+    <color name="black">#000000</color>
+    <color name="blue">#2196F3</color>
+    <color name="white">#FFFFFF</color>
+    <color name="beige">#f5f5dc</color><!--米色 -->
+</resources>

@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    tools:context=".ui.LoginActivity"
+    android:background="@color/beige">
+
+
+    <ImageView
+        android:id="@+id/icon"
+        android:layout_width="@dimen/dp_80"
+        android:layout_height="@dimen/dp_80"
+        android:layout_marginTop="@dimen/dp_64"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/icon"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <EditText
+        android:id="@+id/et_phone"
+        style="@style/LoginEditStyle"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/dp_42"
+        android:layout_marginLeft="@dimen/dp_24"
+        android:layout_marginTop="@dimen/dp_28"
+        android:layout_marginRight="@dimen/dp_24"
+        android:hint="@string/ed_hint_phone"
+        android:inputType="phone"
+        android:maxLength="11"
+        android:paddingLeft="@dimen/dp_68"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/icon" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:text="@string/tv_login_phone_text"
+        android:textColor="@color/textTitle"
+        android:textSize="@dimen/sp_13"
+        app:layout_constraintBottom_toBottomOf="@id/et_phone"
+        app:layout_constraintLeft_toLeftOf="@id/et_phone"
+        app:layout_constraintTop_toTopOf="@id/et_phone" />
+
+
+    <EditText
+        android:id="@+id/et_passWord"
+        style="@style/LoginEditStyle"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/dp_42"
+        android:layout_marginTop="@dimen/dp_15"
+        android:hint="@string/ed_hint_passWord"
+        android:inputType="textPassword"
+        android:maxLength="12"
+        android:paddingLeft="@dimen/dp_68"
+        app:layout_constraintLeft_toLeftOf="@id/et_phone"
+        app:layout_constraintRight_toRightOf="@id/et_phone"
+        app:layout_constraintTop_toBottomOf="@id/et_phone" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:text="@string/tv_login_passWord_text"
+        android:textColor="@color/textTitle"
+        android:textSize="@dimen/sp_13"
+        app:layout_constraintBottom_toBottomOf="@id/et_passWord"
+        app:layout_constraintLeft_toLeftOf="@id/et_passWord"
+        app:layout_constraintTop_toTopOf="@id/et_passWord" />
+
+
+    <TextView
+        android:id="@+id/tv_action"
+        style="@style/MainButtonUnselectedStyle"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/dp_42"
+        android:layout_marginTop="@dimen/dp_29"
+        android:text="@string/tv_login"
+        app:layout_constraintLeft_toLeftOf="@id/et_phone"
+        app:layout_constraintRight_toRightOf="@id/et_phone"
+        app:layout_constraintTop_toBottomOf="@id/et_passWord" />
+
+
+
+    <TextView
+        android:id="@+id/tv_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_6"
+        android:padding="@dimen/dp_24"
+        android:text="@string/tv_register"
+        android:textColor="@color/textTitle"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_action" />
+
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="@dimen/dp_1"
+        android:layout_marginLeft="@dimen/dp_42"
+        android:layout_marginRight="@dimen/dp_42"
+        android:background="@color/editBg"
+        app:layout_constraintBottom_toBottomOf="@id/tv_other_login"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tv_other_login" />
+
+    <TextView
+        android:id="@+id/tv_other_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_99"
+        android:text="@string/tv_other_login_text"
+        android:textColor="@color/black"
+        android:textSize="@dimen/sp_12"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_action" />
+
+
+    <ImageView
+        android:id="@+id/img_weixin"
+        android:layout_width="@dimen/dp_43"
+        android:layout_height="@dimen/dp_43"
+        android:layout_marginLeft="@dimen/dp_42"
+        android:layout_marginTop="@dimen/dp_21"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/selected_weixin"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/img_qq"
+        app:layout_constraintTop_toBottomOf="@id/tv_other_login" />
+
+    <ImageView
+        android:id="@+id/img_qq"
+        android:layout_width="@dimen/dp_43"
+        android:layout_height="@dimen/dp_43"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/selected_qq"
+        app:layout_constraintBottom_toBottomOf="@id/img_weixin"
+        app:layout_constraintLeft_toRightOf="@id/img_weixin"
+        app:layout_constraintRight_toLeftOf="@id/img_weibo"
+        app:layout_constraintTop_toTopOf="@id/img_weixin" />
+
+    <ImageView
+        android:id="@+id/img_weibo"
+        android:layout_width="@dimen/dp_43"
+        android:layout_height="@dimen/dp_43"
+        android:layout_marginRight="@dimen/dp_42"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/selected_weibo"
+        app:layout_constraintBottom_toBottomOf="@id/img_weixin"
+        app:layout_constraintLeft_toRightOf="@id/img_qq"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/img_weixin" />
+
+
+</android.support.constraint.ConstraintLayout>

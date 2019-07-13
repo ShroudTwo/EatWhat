@@ -1,0 +1,123 @@
+apply plugin: 'com.android.application'
+apply plugin: 'org.greenrobot.greendao'
+apply plugin: 'com.mob.sdk'
+
+MobSDK {
+    appKey "2b9e59161d082"
+    appSecret "cfdb78e300eaff68efc113365dcb1b58"
+    SMSSDK { autoSMS true }
+    ShareSDK {
+        //平台配置信息
+        devInfo {
+            SinaWeibo {
+                appKey "225476811"
+                appSecret "250f2cab60d16f31159c2d8c6502e3ff"
+                callbackUri "http://www.sina.com/"
+                shareByAppClient true
+            }
+            Wechat {
+                appId "wx5b99d72f67fb2360"
+                appSecret "b82cb3c4db920bd2b7fb50331245a7c0"
+                BypassApproval true
+            }
+            WechatMoments {
+                appId "wx5b99d72f67fb2360"
+                appSecret "b82cb3c4db920bd2b7fb50331245a7c0"
+                BypassApproval true
+            }
+            QQ {
+                appId "1109537717"
+                appKey "xDinNSFZwwehGLtW"
+                shareByAppClient true
+            }
+
+        }
+    }
+}
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.wei.cookbook"
+        minSdkVersion 19
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath true
+            }
+        }
+        multiDexEnabled true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+greendao {
+    schemaVersion 1             //数据库版本号
+    daoPackage 'com.wei.cookbook.sql'              //生成的dao路径
+    targetGenDir 'src/main/java'                //数据库文件的目录
+}
+
+repositories {
+    maven { url 'https://jitpack.io' }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    implementation 'com.android.support:support-v4:28.0.0'
+    implementation 'com.android.support:design:28.0.0'
+    implementation 'com.trello.rxlifecycle2:rxlifecycle-components:2.1.0'
+    implementation 'com.trello.rxlifecycle2:rxlifecycle-navi:2.1.0'
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.3'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+    implementation 'com.squareup.okhttp3:okhttp:3.9.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.9.0'
+    //okhttp3:logging-interceptor是为了配置缓存策略，必须跟okhttp同一版本号，否则会报错：Failed resolution of: Lokhttp3/internal/Platform
+    implementation 'com.squareup.retrofit2:converter-scalars:2.3.0'
+    implementation 'com.google.code.gson:gson:2.6.2'
+    implementation 'com.jakewharton:butterknife:7.0.0'
+    implementation 'net.zetetic:android-database-sqlcipher:3.5.7@aar'
+    implementation 'org.greenrobot:greendao:3.1.0'
+    implementation 'com.youth.banner:banner:1.4.8'
+    implementation 'org.greenrobot:eventbus:3.0.0'
+    implementation('com.github.bumptech.glide:glide:4.8.0') {
+        exclude group: "com.android.support"
+    }
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
+    implementation 'com.orhanobut:logger:2.1.1'
+    implementation 'com.facebook.stetho:stetho:1.5.0'
+    implementation('com.alibaba.android:vlayout:1.2.18@aar') {
+        transitive = true
+    }
+    implementation 'com.tencent.bugly:crashreport:latest.release'
+    implementation files('libs/AMap3DMap_6.8.0_AMapNavi_6.7.0_AMapSearch_6.5.0_AMapLocation_4.6.0_20190423.jar')
+    // implementation 'com.android.support:multidex:1.0.3'
+    //implementation files('libs/AMap_Services_V2.2.1.jar')
+    //implementation files('libs/android-support-v4.jar')
+    //implementation files('libs/Android_Location_V1.1.2.jar')
+    //implementation files('libs/AMap_3DMap_V2.2.1.jar')
+    /// implementation files('libs/AMap_3DMap_V2.2.1.jar')
+    implementation files('libs/jsms_android-1.2.2.jar')
+    //implementation files('libs/json-lib-2.4-jdk15.jar')
+    implementation files('libs/mysql-connector-java-5.1.46.jar')
+    implementation files('libs/Msc.jar')
+    implementation files('libs/Sunflower.jar')
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.0.0-beta1'
+    implementation 'com.github.bumptech.glide:glide:4.4.1'
+    implementation 'jp.wasabeef:glide-transformations:2.0.1'
+}

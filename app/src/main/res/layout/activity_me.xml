@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/beige">
+
+    <ImageView
+        android:id="@+id/imageView_user"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="44dp"
+        android:layout_marginTop="136dp"
+        android:src="@drawable/knife"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView_memo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="248dp"
+        android:layout_marginTop="136dp"
+        android:src="@drawable/potato"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView_share"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="44dp"
+        android:layout_marginTop="368dp"
+        android:src="@drawable/tomato"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView_setting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="248dp"
+        android:layout_marginTop="368dp"
+        android:src="@drawable/sandwich"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView_user"
+        android:layout_width="wrap_content"
+        android:layout_height="19dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="20dp"
+        android:text="用户资料编辑"
+        android:textSize="16sp"
+        app:layout_constraintLeft_toLeftOf="@id/imageView_user"
+        app:layout_constraintTop_toBottomOf="@id/imageView_user" />
+
+    <TextView
+        android:id="@+id/textView_memo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="20dp"
+        android:text="备忘录"
+        android:textSize="16sp"
+        app:layout_constraintLeft_toLeftOf="@id/imageView_memo"
+        app:layout_constraintTop_toBottomOf="@id/imageView_memo" />
+
+    <TextView
+        android:id="@+id/textView_share"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="44dp"
+        android:layout_marginTop="12dp"
+        android:text="分享"
+        android:textSize="16sp"
+        app:layout_constraintLeft_toLeftOf="@id/imageView_share"
+        app:layout_constraintTop_toBottomOf="@id/imageView_share" />
+
+    <TextView
+        android:id="@+id/textView_setting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="44dp"
+        android:layout_marginTop="12dp"
+        android:text="设置"
+        android:textSize="16sp"
+        app:layout_constraintLeft_toLeftOf="@id/imageView_setting"
+        app:layout_constraintTop_toBottomOf="@id/imageView_setting" />
+</android.support.constraint.ConstraintLayout>

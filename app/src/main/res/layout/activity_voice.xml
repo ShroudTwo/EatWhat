@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/beige"
+    tools:context=".ui.VoiceActivity">
+
+    <EditText
+        android:id="@+id/et_input"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_margin="10dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="68dp"
+        android:background="@color/white"
+        android:hint=""
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_startspeech"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:text="点击按钮语音输入 "
+        app:layout_constraintTop_toBottomOf="@id/et_input"
+        tools:layout_editor_absoluteX="-9dp" />
+
+    <!--<Button-->
+    <!--android:id="@+id/btn_startspeektext"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="语音合成（把文字转声音） "-->
+    <!--app:layout_constraintTop_toBottomOf="@id/btn_startspeech"-->
+    <!--tools:layout_editor_absoluteX="0dp" />-->
+
+    <Button
+        android:id="@+id/startcaipu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:text="炸五花肉炒扁豆"
+        app:layout_constraintTop_toBottomOf="@id/btn_startspeech"
+        tools:layout_editor_absoluteX="16dp" />
+
+    <Button
+        android:id="@+id/nextstep"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:text="下一步"
+        app:layout_constraintTop_toBottomOf="@id/startcaipu"
+        tools:layout_editor_absoluteX="0dp" />
+
+</android.support.constraint.ConstraintLayout>
