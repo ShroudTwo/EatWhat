@@ -26,6 +26,8 @@ public class UserBeanDao extends AbstractDao<UserBean, String> {
     public static class Properties {
         public final static Property Account = new Property(0, String.class, "account", true, "ACCOUNT");
         public final static Property PassWord = new Property(1, String.class, "passWord", false, "PASS_WORD");
+        public final static Property UIcon = new Property(2, String.class, "uIcon", false, "U_ICON");
+        public final static Property UNickName = new Property(3, String.class, "uNickName", false, "U_NICK_NAME");
     }
 
 
@@ -42,7 +44,9 @@ public class UserBeanDao extends AbstractDao<UserBean, String> {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"USER_BEAN\" (" + //
                 "\"ACCOUNT\" TEXT PRIMARY KEY NOT NULL ," + // 0: account
-                "\"PASS_WORD\" TEXT);"); // 1: passWord
+                "\"PASS_WORD\" TEXT," + // 1: passWord
+                "\"U_ICON\" TEXT," + // 2: uIcon
+                "\"U_NICK_NAME\" TEXT);"); // 3: uNickName
     }
 
     /** Drops the underlying database table. */
@@ -64,6 +68,16 @@ public class UserBeanDao extends AbstractDao<UserBean, String> {
         if (passWord != null) {
             stmt.bindString(2, passWord);
         }
+ 
+        String uIcon = entity.getUIcon();
+        if (uIcon != null) {
+            stmt.bindString(3, uIcon);
+        }
+ 
+        String uNickName = entity.getUNickName();
+        if (uNickName != null) {
+            stmt.bindString(4, uNickName);
+        }
     }
 
     @Override
@@ -79,6 +93,16 @@ public class UserBeanDao extends AbstractDao<UserBean, String> {
         if (passWord != null) {
             stmt.bindString(2, passWord);
         }
+ 
+        String uIcon = entity.getUIcon();
+        if (uIcon != null) {
+            stmt.bindString(3, uIcon);
+        }
+ 
+        String uNickName = entity.getUNickName();
+        if (uNickName != null) {
+            stmt.bindString(4, uNickName);
+        }
     }
 
     @Override
@@ -90,7 +114,9 @@ public class UserBeanDao extends AbstractDao<UserBean, String> {
     public UserBean readEntity(Cursor cursor, int offset) {
         UserBean entity = new UserBean( //
             cursor.isNull(offset + 0) ? null : cursor.getString(offset + 0), // account
-            cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1) // passWord
+            cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // passWord
+            cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // uIcon
+            cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3) // uNickName
         );
         return entity;
     }
@@ -99,6 +125,8 @@ public class UserBeanDao extends AbstractDao<UserBean, String> {
     public void readEntity(Cursor cursor, UserBean entity, int offset) {
         entity.setAccount(cursor.isNull(offset + 0) ? null : cursor.getString(offset + 0));
         entity.setPassWord(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
+        entity.setUIcon(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
+        entity.setUNickName(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));
      }
     
     @Override

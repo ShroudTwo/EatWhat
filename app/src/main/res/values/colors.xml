@@ -23,4 +23,9 @@
     <color name="blue">#2196F3</color>
     <color name="white">#FFFFFF</color>
     <color name="beige">#f5f5dc</color><!--米色 -->
+    <color name="purple">#9C27B0</color>
+    <color name="yellow">#FFEB3B</color>
+    <color name="lightblue">#03A9F4</color>
+
+
 </resources>

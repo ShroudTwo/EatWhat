@@ -21,6 +21,8 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
     <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.CAMERA"/>
+
 
     <application
         android:name=".App"
@@ -32,7 +34,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ui.SelfSettingActivity"></activity>
+        <activity android:name=".ui.AboutActivity" />
+        <activity android:name=".ui.SuggestActivity" />
+        <activity android:name=".ui.SelfSettingActivity" />
 
         <meta-data
             android:name="com.google.android.actions"
@@ -91,6 +95,19 @@
         <activity android:name=".ui.FoodSearchListActivity" />
         <activity android:name=".ui.Statistics" />
         <activity android:name=".ui.RecommandActivity" />
+
+        <!--File uri 路径-->
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.wei.cookbook.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+
+
     </application>
 
 </manifest>

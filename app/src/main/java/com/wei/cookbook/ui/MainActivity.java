@@ -48,6 +48,7 @@ public class MainActivity extends BaseActivity<FoodPresenter>
     private boolean isLoading = false;
 
 
+
     @Override
     protected int getLayoutResource()
     {
@@ -331,6 +332,10 @@ public class MainActivity extends BaseActivity<FoodPresenter>
 
         if (ContextCompat.checkSelfPermission(this,Manifest.permission.READ_SMS) != PackageManager.PERMISSION_GRANTED){
             permissionList.add(Manifest.permission.READ_SMS);
+        }
+
+        if (ContextCompat.checkSelfPermission(this,Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
+            permissionList.add(Manifest.permission.CAMERA);
         }
 
         if (!permissionList.isEmpty()){  //申请的集合不为空时，表示有需要申请的权限

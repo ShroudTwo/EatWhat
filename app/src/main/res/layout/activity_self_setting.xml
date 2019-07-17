@@ -1,57 +1,160 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:zsg="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".ui.SelfSettingActivity">
+    tools:context=".ui.SelfSettingActivity"
+    android:fitsSystemWindows="true"
+    android:background="@color/purple">
+
+    <include
+        android:id="@+id/layout_self"
+        layout="@layout/layout_title"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp" />
 
     <ImageView
         android:id="@+id/h_back"
+        android:scaleType="centerCrop"
+        android:fitsSystemWindows="true"
+        android:layout_marginTop="40dp"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:src="@drawable/head"/>
+        android:layout_height="240dp"
+        />
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/h_head"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_centerInParent="true"
-        android:src="@drawable/head"/>
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/h_back"
-        android:orientation="horizontal"
-        android:layout_marginBottom="20dp">
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="90dp"
+        />
 
         <ImageView
             android:id="@+id/user_line"
             android:layout_width="1dp"
             android:layout_height="25dp"
-            android:layout_marginLeft="15dp"
+            android:layout_below="@id/h_head"
             android:layout_centerHorizontal="true"
-            android:background="@color/white"/>
+            android:background="@color/black"/>
 
         <TextView
             android:id="@+id/user_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/h_head"
+           android:layout_marginRight="15dp"
             android:layout_toLeftOf="@id/user_line"
-            android:textSize="17sp"
-            android:textColor="@color/white"
-            android:text="张三"/>
+            android:textStyle="italic"
+            android:textSize="19sp"
+            android:textColor="@color/black"
+            android:text="无名氏"/>
 
         <TextView
             android:id="@+id/user_val"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/h_head"
             android:layout_marginLeft="15dp"
-            android:textSize="17sp"
-            android:textColor="@color/white"
+            android:textSize="19sp"
+            android:textColor="@color/black"
             android:layout_toRightOf="@id/user_line"
-            android:text="182****5882"/>
+            android:textStyle="italic"
+            android:text="未设置"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="110dp"
+        android:layout_below="@id/h_head"
+        android:layout_alignParentBottom="true"
+        >
+        <ImageView
+            android:id="@+id/view_down"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            />
+        <TextView
+            android:id="@+id/textView_update"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:textColor="@color/black"
+            android:gravity="center"
+            android:layout_marginLeft="150dp"
+            android:layout_marginRight="120dp"
+            android:textStyle="italic"
+            android:drawableLeft="@drawable/update"
+            android:textSize="20dp"
+            android:text="检查更新" />
+        <TextView
+            android:id="@+id/textView_flush"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginLeft="150dp"
+            android:gravity="center"
+            android:layout_marginRight="120dp"
+            android:textSize="20dp"
+            android:textColor="@color/black"
+            android:textStyle="italic"
+            android:drawableLeft="@drawable/flush"
+            android:layout_below="@id/textView_update"
+            android:text="清除缓存" />
+        <TextView
+            android:id="@+id/textView_about"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:gravity="center"
+            android:layout_marginLeft="150dp"
+            android:layout_marginRight="120dp"
+            android:drawableLeft="@drawable/about"
+            android:textSize="20dp"
+            android:textColor="@color/black"
+            android:textStyle="italic"
+            android:layout_below="@id/textView_flush"
+            android:text="关于吃啥" />
+        <TextView
+            android:id="@+id/textView_suggestion"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:gravity="center"
+            android:layout_marginLeft="150dp"
+            android:layout_marginRight="120dp"
+            android:textSize="20dp"
+            android:textColor="@color/black"
+            android:textStyle="italic"
+            android:drawableLeft="@drawable/suggestion"
+            android:layout_below="@id/textView_about"
+            android:text="意见反馈" />
+
+        <TextView
+            android:id="@+id/imageView_cancel"
+            android:layout_width="107dp"
+            android:layout_height="35dp"
+            android:layout_alignTop="@+id/textView_suggestion"
+            android:layout_marginTop="121dp"
+            android:layout_centerHorizontal="true"
+            android:text="@string/view_cancel"
+            android:textColor="@color/black"
+            android:textAlignment="center"
+            android:textSize="22sp"
+            android:clickable="true"
+            android:background="@drawable/wave"
+            android:focusable="true"
+            android:scaleType="fitXY"
+             />
+        <View
+            android:layout_width="120dp"
+            android:layout_height="45dp"
+            android:layout_alignTop="@+id/textView_suggestion"
+            android:layout_marginTop="115dp"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/view_round"/>
+
+
     </RelativeLayout>
+
 
 
 </RelativeLayout>

@@ -8,6 +8,7 @@
     <string name="tv_register_agree">我同意“用户注册协议”</string>
     <string name="tools_text">滴滴司机，如果你上下班稳定，而且有车的话，可以去考虑，首先车不能是费油的那种，对道路比较熟悉，自己也有服务意识才可以，服务分的高低决定你接单量和收入。下载一个滴滴司机客户端申请一下就可以了。车辆6年以内的新车，价格在10万左右，根据每个城市的标准可能有所变化。</string>
     <string name="tv_cancel">取消</string>
+    <string name="view_cancel">注销</string>
     <string name="tv_action">确定</string>
     <string name="ed_hint_phone">请输入账号</string>
     <string name="tv_login_phone_text">+86</string>

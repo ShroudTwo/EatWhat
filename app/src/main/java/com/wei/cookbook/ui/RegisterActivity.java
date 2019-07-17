@@ -53,7 +53,7 @@ public class RegisterActivity extends BaseActivity implements TextWatcher
     /*短信倒计时器*/
     private Timer mTimer = new Timer();
 
-    //public EventHandler eh; //事件接收器
+    private EventHandler eventHandler; //事件接收器
 
     @Override
     protected int getLayoutResource()
@@ -75,7 +75,7 @@ public class RegisterActivity extends BaseActivity implements TextWatcher
 
     private void initHandler()
     {
-        EventHandler eventHandler = new EventHandler() {
+            eventHandler = new EventHandler() {
             public void afterEvent(int event, int result, Object data) {
                 // afterEvent会在子线程被调用，因此如果后续有UI相关操作，需要将数据发送到UI线程
                 Message msg = new Message();
@@ -170,6 +170,7 @@ public class RegisterActivity extends BaseActivity implements TextWatcher
                 if (user.register() && isCheck)
                 {
                     alert(getString(R.string.alert_register_success));
+
                     doFinish(200);
                 }else
                 {
@@ -245,8 +246,7 @@ public class RegisterActivity extends BaseActivity implements TextWatcher
             mTimer.cancel();
             isCoding = false;
         }
-       // SMSSDK.unregisterEventHandler();
-
+       SMSSDK.unregisterEventHandler(eventHandler);
     }
 
     /*短信验证码倒计时器*/

@@ -4,12 +4,17 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.PixelFormat;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.Nullable;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -25,7 +30,9 @@ import com.wei.cookbook.utils.StringUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -33,6 +40,7 @@ import butterknife.Bind;
 import butterknife.OnClick;
 import cn.sharesdk.framework.Platform;
 import cn.sharesdk.framework.PlatformActionListener;
+import cn.sharesdk.framework.PlatformDb;
 import cn.sharesdk.framework.ShareSDK;
 import cn.sharesdk.sina.weibo.SinaWeibo;
 import cn.sharesdk.tencent.qq.QQ;
@@ -57,6 +65,9 @@ public class LoginActivity extends BaseActivity implements TextWatcher
 
         private static final String TAG = LoginActivity.class.getName();
 
+        private String userId;
+        private String userName = null;
+        private String userIcon = null;
       //  private IUiListener listener;
 
 
@@ -102,9 +113,12 @@ public class LoginActivity extends BaseActivity implements TextWatcher
                 /*判断当前状态是否符合登录状态*/
                 String account = mEtPhone.getText().toString();
                 String pass = mEtPassWord.getText().toString();
+                String defaultIcon = "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1563188994572&di=2c0d2c191c17523243daa47a29f4fd60&imgtype=0&src=http%3A%2F%2Fhbimg.b0.upaiyun.com%2F9c63d61835dab92e4acac88c88eb6394b11da4471634-OtR7ja_fw658";
                 UserBean user = new UserBean();
                 user.setAccount(account);
                 user.setPassWord(pass);
+                user.setuNickName("未设置");
+                user.setuIcon(defaultIcon);
                 String admin = "123";
                 if(account.equals(admin))
                 {
@@ -154,104 +168,33 @@ public class LoginActivity extends BaseActivity implements TextWatcher
         }
     }
 
-//    //QQ登录
-//    private void loginQQ() {
-//        listener = new IUiListener() {
-//            @Override
-//            public void onComplete(Object object) {
-//
-//                Log.e(TAG, "登录成功: " + object.toString() );
-//                openActivity(MainActivity.class, null);
-//                JSONObject jsonObject = (JSONObject) object;
-//                try {
-//                    //得到token、expires、openId等参数
-//                    String token = jsonObject.getString(Constants.PARAM_ACCESS_TOKEN);
-//                    String expires = jsonObject.getString(Constants.PARAM_EXPIRES_IN);
-//                    String openId = jsonObject.getString(Constants.PARAM_OPEN_ID);
-//
-//                    mTencent.setAccessToken(token, expires);
-//                    mTencent.setOpenId(openId);
-//                    Log.e(TAG, "token: " + token);
-//                    Log.e(TAG, "expires: " + expires);
-//                    Log.e(TAG, "openId: " + openId);
-//
-//                    //获取个人信息
-//                    getQQInfo();
-//                } catch (Exception e) {
-//                }
-//            }
-//
-//            @Override
-//            public void onError(UiError uiError) {
-//                //登录失败
-//                Log.e(TAG, "登录失败" + uiError.errorDetail);
-//                Log.e(TAG, "登录失败" + uiError.errorMessage);
-//                Log.e(TAG, "登录失败" + uiError.errorCode + "");
-//
-//            }
-//
-//            @Override
-//            public void onCancel() {
-//                //登录取消
-//                Log.e(TAG, "登录取消");
-//
-//            }
-//        };
-//        //context上下文、第二个参数SCOPO 是一个String类型的字符串，表示一些权限
-//        //应用需要获得权限，由“,”分隔。例如：SCOPE = “get_user_info,add_t”；所有权限用“all”
-//        //第三个参数事件监听器
-//        mTencent.login(this, "all", listener);
-//        //注销登录
-//        //mTencent.logout(this);
-//    }
-//
-//        /**
-//         * 获取QQ个人信息
-//         */
-//        private void getQQInfo() {
-//            //获取基本信息
-//            QQToken qqToken = mTencent.getQQToken();
-//            UserInfo info = new UserInfo(this, qqToken);
-//            info.getUserInfo(new IUiListener() {
-//                @Override
-//                public void onComplete(Object object) {
-//                    try {
-//                        Log.e(TAG, "个人信息：" + object.toString());
-//                       // infoText.setText(object.toString());
-//                        //头像
-//                        String avatar = ((JSONObject) object).getString("figureurl_2");
-//                        //GlideUtils.showGlide(LoginActivity.this, avatar, infoIcon);
-//                        String nickName = ((JSONObject) object).getString("nickname");
-//                        //infoName.setText(nickName);
-//                    } catch (JSONException e) {
-//                        e.printStackTrace();
-//                    }
-//                }
-//
-//                @Override
-//                public void onError(UiError uiError) {
-//                }
-//
-//                @Override
-//                public void onCancel() {
-//                }
-//            });
-//        }
-//
-//        /**
-//         * 回调必不可少,官方文档未说明
-//         */
-//        @Override
-//        protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//            super.onActivityResult(requestCode, resultCode, data);
-//            //腾讯QQ回调
-//            Tencent.onActivityResultData(requestCode, resultCode, data, listener);
-//            if (requestCode == Constants.REQUEST_API) {
-//                if (resultCode == Constants.REQUEST_LOGIN) {
-//                    Tencent.handleResultData(data, listener);
-//                }
-//            }
-//        }
+        //将drawable转化成字符串
+        public synchronized static String drawableToString(Drawable drawable) {
+            if (drawable != null) {
+                Bitmap bitmap = Bitmap
+                        .createBitmap(
+                                drawable.getIntrinsicWidth(),
+                                drawable.getIntrinsicHeight(),
+                                drawable.getOpacity() != PixelFormat.OPAQUE ? Bitmap.Config.ARGB_8888
+                                        : Bitmap.Config.ARGB_8888);
+                Canvas canvas = new Canvas(bitmap);
+                drawable.setBounds(0, 0, drawable.getIntrinsicWidth(),
+                        drawable.getIntrinsicHeight());
+                drawable.draw(canvas);
+                int size = bitmap.getWidth() * bitmap.getHeight() * 4;
+
+                // 创建一个字节数组输出流,流的大小为size
+                ByteArrayOutputStream baos = new ByteArrayOutputStream(size);
+                // 设置位图的压缩格式，质量为100%，并放入字节数组输出流中
+                bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
+                // 将字节数组输出流转化为字节数组byte[]
+                byte[] imagedata = baos.toByteArray();
+
+                return Base64.encodeToString(imagedata, Base64.DEFAULT);
+            }
+            return " ";
+        }
+
 
         private PlatformActionListener platformActionListener=new PlatformActionListener() {
 
@@ -263,11 +206,24 @@ public class LoginActivity extends BaseActivity implements TextWatcher
             @Override
 
             public void onComplete(Platform arg0, int arg1, HashMap arg2) {
+
+                PlatformDb platDB = arg0.getDb();//获取数平台数据DB
+                //通过DB获取各种数据
+                ///platDB.getToken();
+                //platDB.getUserGender();
+                userIcon = platDB.getUserIcon();
+                userId = platDB.getUserId();
+                userName = platDB.getUserName();
+                UserBean user = new UserBean();
+                user.setAccount(userId);
+                user.setPassWord(null);
+                user.setuIcon(userIcon);
+                user.setuNickName(userName);
+                App.setUser(user);
                 openActivity(MainActivity.class, null);
             }
 
             @Override
-
             public void onError(Platform arg0, int arg1,Throwable arg2) {
             }
 
